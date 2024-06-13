@@ -8,25 +8,38 @@
 <body>
     <!-- Your HTML content -->
     <p>Test</p>
+
     <!-- Deezer SDK Script -->
-    <script src="https://cdn.jsdelivr.net/npm/deezer-web-api-sdk/dist/deezer-web-api-sdk.min.js"></script>
-
     <script>
-        // Initialize Deezer SDK
-        DZ.init({
-            appId: '660431',
-            channelUrl: 'https://hopsicat.github.io/deezer-channel/channel.html', // Replace with your channel URL
-            player: {
-                onload: function () {
-                    console.log('Deezer Player loaded');
-                }
-            }
-        });
+        function loadDeezerSDK(callback) {
+            var script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/deezer-web-api-sdk/dist/deezer-web-api-sdk.min.js";
+            script.onload = callback;
+            script.onerror = function() {
+                console.error("Failed to load Deezer SDK script.");
+            };
+            document.head.appendChild(script);
+        }
 
-        // Function to handle SDK readiness
-        DZ.ready(function () {
-            console.log('Deezer SDK is ready');
-            // You can start using Deezer SDK methods here
+        loadDeezerSDK(function() {
+            console.log("Deezer SDK script loaded.");
+
+            // Initialize Deezer SDK
+            DZ.init({
+                appId: '660431',
+                channelUrl: 'https://hopsicat.github.io/deezer-channel/channel.html', // Replace with your channel URL
+                player: {
+                    onload: function () {
+                        console.log('Deezer Player loaded');
+                    }
+                }
+            });
+
+            // Function to handle SDK readiness
+            DZ.ready(function () {
+                console.log('Deezer SDK is ready');
+                // You can start using Deezer SDK methods here
+            });
         });
     </script>
 </body>
