@@ -32,16 +32,7 @@
         loadDeezerSDK(function() {
             console.log("Deezer SDK script loaded.");
 			           // Function to handle SDK readiness
-            DZ.ready(function () {
-                console.log('Deezer SDK is ready');
-
-                // Add event listener to the button
-                document.getElementById('playButton').addEventListener('click', function() {
-                    // Play a specific track by its ID
-                    var trackId = '3135556'; // Replace with the desired track ID
-                    DZ.player.playTracks([trackId]);
-                });
-            });
+            
 
             // Ensure DZ is defined before initializing
             if (typeof DZ !== 'undefined') {
@@ -60,6 +51,20 @@
                 DZ.ready(function () {
                     console.log('Deezer SDK is ready');
                     // You can start using Deezer SDK methods here
+					
+					DZ.ready(function () {
+                console.log('Deezer SDK is ready');
+
+                // Add event listener to the button
+                document.getElementById('playButton').addEventListener('click', function() {
+                    // Play a specific track by its ID
+                    var trackId = '3135556'; // Replace with the desired track ID
+                    DZ.player.playTracks([trackId]);
+                });
+            });
+					
+					
+					
                 });
             } else {
                 console.error("DZ is not defined after loading the script.");
