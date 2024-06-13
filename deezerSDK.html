@@ -11,6 +11,7 @@
 
     <!-- Deezer SDK Script -->
     <script>
+        // Function to load Deezer SDK
         function loadDeezerSDK(callback) {
             var script = document.createElement('script');
             script.src = "http://cdn-files.deezer.com/js/min/dz.js";
@@ -21,25 +22,31 @@
             document.head.appendChild(script);
         }
 
+        // Load the Deezer SDK
         loadDeezerSDK(function() {
             console.log("Deezer SDK script loaded.");
 
-            // Initialize Deezer SDK
-            DZ.init({
-                appId: '660431',
-                channelUrl: 'https://hopsicat.github.io/deezer-channel/channel.html', // Replace with your channel URL
-                player: {
-                    onload: function () {
-                        console.log('Deezer Player loaded');
+            // Ensure DZ is defined before initializing
+            if (typeof DZ !== 'undefined') {
+                // Initialize Deezer SDK
+                DZ.init({
+                    appId: '660431',
+                    channelUrl: 'https://hopsicat.github.io/deezer-channel/channel.html', // Replace with your channel URL
+                    player: {
+                        onload: function () {
+                            console.log('Deezer Player loaded');
+                        }
                     }
-                }
-            });
+                });
 
-            // Function to handle SDK readiness
-            DZ.ready(function () {
-                console.log('Deezer SDK is ready');
-                // You can start using Deezer SDK methods here
-            });
+                // Function to handle SDK readiness
+                DZ.ready(function () {
+                    console.log('Deezer SDK is ready');
+                    // You can start using Deezer SDK methods here
+                });
+            } else {
+                console.error("DZ is not defined after loading the script.");
+            }
         });
     </script>
 </body>
