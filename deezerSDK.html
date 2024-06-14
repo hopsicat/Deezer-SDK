@@ -36,7 +36,8 @@
 
             // Ensure DZ is defined before initializing
             if (typeof DZ !== 'undefined') {
-                // Initialize Deezer SDK
+                console.log("rentre dans le if");
+				// Initialize Deezer SDK
                 DZ.init({
                     appId: '660431',
                     channelUrl: 'https://hopsicat.github.io/deezer-channel/channel.html', // Replace with your channel URL
@@ -61,8 +62,7 @@
                     var trackId = '3135556'; // Replace with the desired track ID
                     DZ.player.playTracks([trackId]);
                 });
-            });
-					
+            });		
 					
 					
                 });
